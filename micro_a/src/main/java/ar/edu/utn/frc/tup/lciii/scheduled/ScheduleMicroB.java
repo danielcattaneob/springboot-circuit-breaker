@@ -26,7 +26,7 @@ public class ScheduleMicroB {
             ResponseEntity<String> microResponse = microBRestClient.getMicro();
             log.info(microResponse.getBody());
         } catch (Exception e) {
-            log.info(e.getMessage());
+            log.error(e.getMessage());
         }
     }
 
@@ -36,7 +36,7 @@ public class ScheduleMicroB {
             String microResponse = microCRestClient.getMicro().getBody();
             log.info(microResponse);
         } catch (Exception e) {
-            log.info(e.getMessage());
+            log.error(e.getMessage());
         }
     }
 }

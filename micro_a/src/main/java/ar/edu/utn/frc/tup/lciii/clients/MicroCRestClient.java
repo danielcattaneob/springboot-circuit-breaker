@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class MicroCRestClient {
 
-    private static final String RESILIENCE4J_INSTANCE_NAME = "microCircuitBreaker";
+    private static final String RESILIENCE4J_INSTANCE_NAME = "microCircuitBreakerC";
     private static final String FALLBACK_METHOD = "fallback";
 
     String baseResourceUrl = "http://localhost:8082/micro";
@@ -29,7 +29,7 @@ public class MicroCRestClient {
 
     public ResponseEntity<String> fallback(Exception ex) {
         counter++;
-        log.info("Execution N° " + counter + " - FallBack C");
+        log.warn("Execution N° {} - FallBack C - Error message: {}", counter, ex.getMessage());
         return ResponseEntity.status(503).body("Response from Circuit Breaker Fallback of Micro C");
     }
 }
