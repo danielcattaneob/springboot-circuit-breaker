@@ -2,12 +2,14 @@ package ar.edu.utn.frc.tup.lciii.scheduled;
 
 import ar.edu.utn.frc.tup.lciii.clients.MicroBRestClient;
 import ar.edu.utn.frc.tup.lciii.clients.MicroCRestClient;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+@Slf4j
 @Configuration
 @EnableScheduling
 public class ScheduleMicroB {
@@ -22,9 +24,9 @@ public class ScheduleMicroB {
     public void scheduleActionCallMicroB() {
         try {
             ResponseEntity<String> microResponse = microBRestClient.getMicro();
-            System.out.println(microResponse.getBody());
+            log.info(microResponse.getBody());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 
@@ -32,9 +34,9 @@ public class ScheduleMicroB {
     public void scheduleActionCallMicroC() {
         try {
             String microResponse = microCRestClient.getMicro().getBody();
-            System.out.println(microResponse);
+            log.info(microResponse);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 }
